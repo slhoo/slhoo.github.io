@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="#">
+			<h1>Створити акаунт</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+			<span>або скористайтесь своєю електроною поштою для реєстрації</span>
+			<input type="text" placeholder="Ім'я" />
+			<input type="email" placeholder="Імейл" />
+			<input type="password" placeholder="Пароль" />
+			<button>Зареєструватись</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="#">
+			<h1>Увійти</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+			<span>або скористайтеся своїм обліковим записом</span>
+			<input type="email" placeholder="Імейл" />
+			<input type="password" placeholder="Пароль" />
+			<a href="#">Забули свій пароль?</a>
+			<button>Увійти</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>З поверненням!</h1>
+				<p>Щоб залишатися на зв'язку з нами, увійдіть, використовуючи свої особисті дані</p>
+				<button class="ghost" id="signIn">Увійти</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Привіт, друже!</h1>
+				<p>Введіть свої особисті дані та починайте подорож з нами</p>
+				<button class="ghost" id="signUp">Зареєструватись</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="main.js"></script>
+</body>
+</html>
