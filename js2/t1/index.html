@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Name</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody id="tb">
+            
+
+
+
+        </tbody>
+    
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script>
+       const firebaseConfig = {
+        apiKey: "AIzaSyCkg3m46VSVbOtOYaEgNYYWh3_vRW9B7Nk",
+        authDomain: "j-9fed5.firebaseapp.com",
+        projectId: "j-9fed5",
+        storageBucket: "j-9fed5.appspot.com",
+        messagingSenderId: "47870921141",
+        appId: "1:47870921141:web:159fe638c0bca16ca831fc"
+            };
+
+        firebase.initializeApp(firebaseConfig);
+
+        var db = firebase.firestore();
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+form{
+    float: left;
+    padding: 4px;
+    border-radius: 4px;
+    background-color: dimgray;
+    font-family: "Gill Sans", sans-serif;;
+}
+
+button{
+    background-color: rgb(0, 0, 0);
+    padding: 5px;
+    border-radius: 6px;
+    color: rgb(255, 255, 255);
+    font-family: Georgia, serif;
+    font-family: system-ui;
+    border: 0;
+}
+button:hover{
+    background-color: rgb(9, 51, 53);
+    color: rgb(208, 208, 209);
+}

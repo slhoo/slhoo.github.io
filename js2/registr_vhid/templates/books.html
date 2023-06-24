@@ -1,0 +1,16 @@
+<div class="products" style=" display: flex; flex-wrap: wrap; justify-content: space-around; margin: 5%;">
+    <div class="tovar" v-for="tovar in $root.content" style="border: 2px solid grey; height: auto; width: 220px; margin:15px; margin-left: 30px;">
+    <div class="img" style=" margin: 8px; height: 280px; width: 200px;"><img v-bind:src="tovar.img" alt="" style="height: 280px; width: 200px;"></div>
+    <div class="book" style="display: flex; flex-direction: column; margin-left: 5px;">
+    <div class="nazva"><p>Назва: <br> {{tovar.name}}</p></div>
+    <hr class="hr" style=" margin-left: 2px; margin-right: 2px; margin-top: 6px; margin-bottom: 6px;">
+    <div class="writer"><p>Письменник: {{tovar.developer}}</p></div>
+    <hr class="hr" style=" margin-left: 2px; margin-right: 2px; margin-top: 6px; margin-bottom: 6px;">
+    <div class="vidav"><p>Видавництво: {{tovar.vidav}}</p></div>
+    <hr class="hr" style=" margin-left: 2px; margin-right: 2px; margin-top: 6px; margin-bottom: 6px;">
+    <div class="price"><p>Ціна: {{tovar.price}}</p></div>
+    <hr class="hr" style=" margin-left: 2px; margin-right: 2px; margin-top: 6px; margin-bottom: 6px;">
+    <div class="vidhuki"><p>Відгуки: {{tovar.reviews}}</p></div>
+    </div>
+    </div>
+</div>
