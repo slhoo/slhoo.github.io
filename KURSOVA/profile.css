@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.avatar{
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    /* box-shadow: 0px 0px 5px 1px rgb(174, 174, 175); */
+    margin-top: 40px;
+    margin-left: 20px;
+    background-color: rgba(240, 248, 255, 0.491);
+}
+.main_div_profile{
+    /* border: 1px solid rgb(229, 245, 2); */
+    width: 760px;
+    height: 415px;
+    display: flex;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background-color: rgba(0, 0, 0, 0.73);
+    border-radius: 40px;
+    flex-direction: column;
+    z-index: 99;
+    position: relative;
+    /* left: -15%; */
+    margin-right: 50px;
+}
+.edit_info{
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.73);
+    border-radius: 20px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    flex-direction: column;
+    padding: 20px;
+    position: relative;
+    right: 6.6%;
+}
+.main{
+    justify-content: center;
+    display: flex;
+    /* border: 1px solid rgb(51, 245, 2); */
+    width: 50%;
+}
+.input_prof{
+    margin-top: 50px;
+    /* border: 1px solid rgb(245, 2, 156); */
+    width: 220px;
+    height: auto;
+    margin-left: 40px;
+    margin-bottom: 50px;
+}
+.input_prof2{
+    margin-left: 40px;
+    margin-top: 50px;
+    /* border: 1px solid rgb(255, 255, 255); */
+    width: 220px;
+    height: auto;
+}
+label{
+    color: rgb(228, 228, 228);
+    margin-top: 15px;
+    font-size: 19px;
+}
+.akk{
+    /* border: 1px solid rgb(38, 0, 253); */
+    margin-left: 25px;
+    height: 120px;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    bottom: 20%;
+}
+.edit_akk, .delete_akk{
+    /* border: 2px solid rgb(38, 0, 253); */
+    color: aliceblue;
+    border-radius: 7px;
+    width: 180px;
+    height: 45px;
+    padding: 7px;
+    font-size: 16px;
+    font-family:sans-serif;
+    letter-spacing: 1px;
+    border: 0;
+    background-color: rgba(37, 37, 37, 0.461);
+    cursor: pointer;
+}
+.label{
+    color: rgb(228, 228, 228);
+    margin-top: 10px;
+    font-size: 15px;
+}
+.inp{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: rgb(255, 255, 255);
+    border-bottom: 1px solid blue;
+    height: 30px;
+    font-size: 15px;
+    font-weight: 700;    
+}
+.delete-confirmation{
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

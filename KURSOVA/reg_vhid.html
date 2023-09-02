@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reg_vhid.css">
+</head>
+<body>
+<div id="signup-box">
+        <h2>Реєстрація</h2>
+    <div class="user-box">
+        <label for="">Ім'я</label><br>
+        <input type="text" id="nik"><br><br>
+    </div>
+    <div class="user-box">
+        <label for="">Пошта</label><br>
+        <input type="text" id="email"><br><br>
+    </div>
+    <div class="user-box">
+        <label for="">Пароль</label><br>
+        <input type="password" id="password"><br><br>
+    </div>
+    <div class="user-button">
+        <button onclick="ema_pass()">Зареєструватись</button><br><br>    
+        <button onclick="changeForm()">У мене вже є акаунт</button><br><br>
+    </div>
+        <div class="user-button2">
+            <button onclick="google_vhid()" id="AuthButton">Вхід за допомогою гугл</button>
+            <button onclick="showLoginForm()" id="vhid_admin">Увійти в акаунт адміністратора</button>
+        </div>
+        <div id="login-form">
+            <div style="display: flex; justify-content: center;">
+                <div style="margin-left: 15px; margin-top: 5px;">
+                    <label for="password">Введіть пароль адміністратора:</label>
+                    <input type="password" id="password_admin" required>
+                    <button onclick="checkCredentials()">Увійти</button>
+                </div>
+                <div>
+                    <img src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/cross-256.png" style="width: 20px; height: 20px; background-color: aliceblue; border-radius: 50%; cursor: pointer;" onclick="CloseLoginAdmin()">
+                </div>
+            </div>
+        </div>
+</div>
+
+<div id="notification" class="notification">
+    <img src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/cross-256.png" style="width: 20px; height: 20px; cursor: pointer; margin-left: 95%;" onclick="CloseNote()">
+    <p>Помилка при вході в акаунт. Будь ласка, перевірте чи правильно ви написали Пошту та/або Пароль</p>
+</div>
+    <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
+         <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-firestore.js"></script>
+         <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-auth.js"></script>
+         <script src="firebase/fb.js"></script>
+         <script src="reg_vhid.js"></script>
+</body>
+</html>
