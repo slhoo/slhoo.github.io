@@ -1,0 +1,70 @@
+<div style="display: flex; justify-content: space-between;">
+<div class="main">
+    <div class="main_div_profile">
+        <div class="info_profile">
+            <div style="display: flex;">
+                <img :src="img" class="avatar">
+                <div style="display: flex;">
+                    <div class="input_prof" style="display: flex; flex-direction: column;">
+                            <label>Прізвище:</label>
+                            <input type="text" v-model="lastname" readonly>
+                            <label>Ім'я:</label>
+                            <input type="text" v-model="name" readonly>
+                            <label>По-батькові:</label>
+                            <input type="text" v-model="patronymic" readonly>    
+                            <label>Електрона пошта:</label>
+                            <input type="email" v-model="email" readonly>         
+                    </div>
+                    <div class="input_prof2" style="display: flex; flex-direction: column;">
+                            <label>Номер телефону:</label>
+                            <input type="text" v-model="phone" readonly>
+                            <label>Населений пункт:</label>
+                            <input type="text" v-model="place" readonly>
+                            <label>Поштове відділення:</label>
+                            <input type="text" v-model="postoffice" readonly>
+                            <label>Пароль:</label>
+                            <input type="password" v-model="password" readonly>
+                    </div>                
+                </div>                
+            </div>
+
+        <div class="akk">
+            <button class="edit_akk" @click="toggleEditWindow">Редагувати акаунт</button>
+            <button class="delete_akk" @click="showDeleteConfirmation = true">Видалити акаунт</button>
+
+            <div v-if="showDeleteConfirmation" class="delete-confirmation">
+                <p>Ви дійсно хочете видалити свій акаунт?</p>
+                <button @click="deleteAccount">Так</button>
+                <button @click="showDeleteConfirmation = false">Ні</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+    <div class="edit_info" v-if="showEditWindow">
+        <div style="display: flex; flex-direction: column;">
+            <label class="label">Прізвище:</label>
+            <input class="inp" type="text" v-model="lastname">
+            <label class="label">Ім'я:</label>
+            <input class="inp" type="text" v-model="name">
+            <label class="label">По-батькові:</label>
+            <input class="inp" type="text" v-model="patronymic">
+            <label class="label">Номер телефону:</label>
+            <input class="inp" type="text" v-model="phone">
+            <label class="label">Населений пункт:</label>
+            <input class="inp" type="text" v-model="place">
+            <label class="label">Поштове відділення:</label>
+            <input class="inp" type="text" v-model="postoffice">
+            <label class="label">Електрона пошта:</label>
+            <input class="inp" type="email" v-model="email"> 
+            <label class="label">Пароль:</label>
+            <input class="inp" type="password" v-model="password">
+            <label class="label">Фото профілю:</label>
+            <input class="inp" type="text" v-model="img">
+            <input class="inp" type="file" @change="handleImageUpload" style="background-color: transparent; border: none; outline: none; margin-top: 3px;">
+        </div>
+          <button @click="saveChanges" style="cursor: pointer; border: none; background-color: white; padding: 5px; font-weight: 600; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">Зберегти зміни</button>             
+    </div>
+
+</div>
