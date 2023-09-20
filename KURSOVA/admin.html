@@ -121,7 +121,7 @@
 
 </head>
 <body>
-    <div class="main" id="admin_vue">
+    <!-- <div class="main" id="admin_vue">
       <div class="menu" >
         <a href="#/add_tovar">Товари</a>
         <a href="#/orders">Замовлення</a>
@@ -131,7 +131,81 @@
 
         <component :is="currentView"/>
       </div>
-    </div>
+    </div> -->
+    <div class="container-fluid" style="margin-top: 20px;">
+      <div id="arrayLength"></div>
+      <button onclick="showMod('addTaskModal')" style="background-color: transparent; border: 2px solid rgb(200, 200, 200); color: rgb(255, 255, 255); padding: 7px; margin-bottom: 10px; margin-left: 10px;">Додати товар</button>
+      <table class="table table-bordered table-dark">
+          <thead>
+            <tr>
+              <th scope="col">№</th>
+              <th scope="col">Назва</th>
+              <th scope="col">Письменник</th>
+              <th scope="col">Жанр</th>
+              <th scope="col">Ціна</th>
+              <th scope="col">Опис</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+              
+          </tbody>
+        </table>
+        
+  </div>
+  
+  <div class="modal fade" id="addTaskModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Додайте товар</h5>
+              <button type="button" class="btn-close" aria-label="Close" onclick="hideMod('addTaskModal')"></button>
+          </div>
+          <div class="modal-body">
+              <h5 class="my-2">Дані товару</h5>
+              <input class="form-control" placeholder="Введіть назву" id="name"><br>
+              <input class="form-control" placeholder="Введіть письменника" id="developer"><br>
+              <input class="form-control" placeholder="Введіть жанр" id="genre"><br>
+              <input class="form-control" placeholder="Введіть ціну" id="price"><br>
+              <input class="form-control" placeholder="Введіть опис" id="description"><br>
+              <input class="form-control" placeholder="Вставте обкладинку" id="img"><br>
+          </div>
+         
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" onclick="hideMod('addTaskModal')">Закрити</button>
+              <button type="button" class="btn btn-primary" onclick="dod_tov()">Додати</button>
+          </div>
+          </div>
+      </div>
+  </div>
+  
+  <div class="modal fade" id="editTaskModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Редагувати товар</h5>
+              <button type="button" class="btn-close" aria-label="Close" onclick="hideMod('editTaskModal')"></button>
+          </div>
+          <div class="modal-body">
+              <h5 class="my-2">Дані товару</h5>
+  
+  
+              <input class="form-control" placeholder="Змініть назву" id="edit_name"><br>
+              <input class="form-control" placeholder="Змінть письменника" id="edit_developer"><br>
+              <input class="form-control" placeholder="Змініть жанр" id="edit_genre"><br>
+              <input class="form-control" placeholder="Змініть ціну" id="edit_price"><br>
+              <input class="form-control" placeholder="Змініть опис" id="edit_description"><br>
+              <input class="form-control" placeholder="Змініть обкладинку" id="edit_img"><br>
+          </div>
+         
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" onclick="hideMod('editTaskModal')">Закрити</button>
+              <button type="button" class="btn btn-primary" id="save">Зберегти зміни</button>
+          </div>
+          </div>
+      </div>
+  </div>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://unpkg.com/vue@next"></script>
         <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>

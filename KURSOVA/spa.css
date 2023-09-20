@@ -230,7 +230,7 @@ input[type="search"]::-webkit-search-cancel-button {
     gap: 4px;
     background-color:rgba(0, 0, 0, 0.880);
     padding: 20px;
-    height: 390px;
+    height: 410px;
 
 }
 .genres label{

@@ -49,8 +49,32 @@ const data = {
                 const filteredProducts = this.products.filter(product => product.genre === genre);
                 this.$root.content = filteredProducts;
             },
+            showAllPrice(){
+                if(min_price.value.length > 0){
+                    min_price.value = null; 
+                }
+                if(max_price.value.length > 0){
+                    max_price.value = null;
+                }  
+                this.$root.content = this.products;
+            },
+            FilterPrice(){
+                let all_tovars = this.content;
+                
+                let nph = all_tovars.slice();
+                    if(min_price.value.length > 0){
+                        nph = nph.filter(function(phone){
+                            return min_price.value <= phone.price
+                        })
+                    }
+                    if(max_price.value.length > 0){
+                        nph = nph.filter(function(phone){
+                            return max_price.value >= phone.price 
+                        })
+                    }  
+                this.$root.content = nph; 
 
-
+            },
             getProducts(){
                 db.collection('products').get().then(res => {
                     this.$root.content = [];
@@ -250,7 +274,8 @@ const data = {
                   setTimeout(function(){
                     window.location.href = 'reg_vhid.html'
                   },1000)
-            }
+            },
+
         },
         components: {
 
@@ -264,7 +289,7 @@ const data = {
             window.addEventListener('hashchange', () => {
                 this.currentPath = window.location.hash;
               });
-
+              
         }
     };
     Vue.createApp(app).mount('#app');
@@ -347,6 +372,64 @@ window.addEventListener('click', function(event){
        };  
    }); 
 
+//    let vsi_tovari=[]
+//    function drawTovars(){
+//        let tovari = document.getElementById('tovari');
+//        tovari.innerHTML = ''
+//        db.collection('products').get().then(res => {
+//            res.forEach(doc  =>{
+//                let tovar = doc.data();
+//                tovar.id = doc.id;
+//                tovar.count = 1;
+//                vsi_tovari.push(tovar)
+//                tovari.innerHTML += `
+//            <div class="tovar">
+//                <p>Назва: ${tovar.name}</p>
+//                <p>Картинка:${tovar.img}</p>
+//                <p>Діагональ:${tovar.display}</p>
+//                <p>Акумулятор:${tovar.accumulyator}</p>
+//                <p>Ціна: ${tovar.price}</p>
+//                <button onclick="saveLocal(${vsi_tovari.length-1})">Купити</button>
+//            </div>
+//                `
+              
+//            })
+//        })
+//    }
+//    drawTovars()
+   
+   
+//    function saveLocal(index){
+//        let loc_tovars = getLocal();
+    
+//        let tovar = loc_tovars.findIndex(car => car.id === vsi_tovari[index].id);
+        
+//        if(tovar === -1){
+//            loc_tovars.push(vsi_tovari[index])
+//        }else{
+//            loc_tovars[tovar].count++
+//        }
+      
+//        console.log(tovar)
+   
+   
+      
+//        localStorage.setItem('prod', JSON.stringify(loc_tovars))
+      
+//    }
+   
+   
+//    function getLocal(){
+//       let prod =  JSON.parse(localStorage.getItem('prod'));
+//        if(prod === null){
+//            return []
+//        }else{
+//            return prod
+//        }
+   
+   
+//    }
+   
 function calcCartPriceAndDelivery() {
 	const cart_colection = document.querySelector('.cart_colection');
 	const priceElements = cart_colection.querySelectorAll('.cart_price');
@@ -373,32 +456,4 @@ function calcCartPriceAndDelivery() {
 		deliveryCost.classList.remove('free');
 		deliveryCost.innerText = '50 грн';
 	}
-}
-
-let all_tovars = [];
-function GetTovars(){
-    db.collection('products').get().then(res => 
-        res.forEach(doc =>{
-            let obj = doc.data();
-            obj.id = doc.id;
-            all_tovars.push(obj)
-        })    
-    )
-    console.log(all_tovars)
-}
-GetTovars()
-function Filter(){
-  
-    let nph = all_tovars.slice();
-    if(min_price.value.length > 0){
-        nph = nph.filter(function(phone){
-            return min_price.value <= phone.price
-        })
-    }
-    if(max_price.value.length > 0){
-        nph = nph.filter(function(phone){
-            return max_price.value >= phone.price 
-        })
-    }
-    console.log(nph)
 }
