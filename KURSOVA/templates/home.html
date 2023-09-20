@@ -9,7 +9,14 @@
         <button @click="filterByGenre('Фантастика')">Фантастика</button>
         <button @click="filterByGenre('Фентезі')">Фентезі</button>
         <button @click="filterByGenre('Класична література')">Класична література</button>
+            <label for="">Мін. Ціна</label>
+            <input type="number" id="min_price" min="120">
+            <label for="">Макс. Ціна</label>
+            <input type="number" id="max_price" min="130">
+            <button onclick="Filter()">Застосувати</button>               
+
     </div>
+
 
 <input type="search" placeholder="Введіть назву або автора книги" id="elactic" v-model="searchTerm" @input="poshuk" class="input_search">
 

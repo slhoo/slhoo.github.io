@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="" id="tovar_genre" onchange="GetTovars()">
+        <option value="detective">Детектив</option>
+        <option value="fantesy">Фентезі</option>
+        <option value="horror">Жахи</option>
+    </select>
+    <br>
+    <label for="">Мін. Ціна</label><br>
+    <input type="number" id="min_price"><br>
+    <label for="">Макс. Ціна</label><br>
+    <input type="number" id="max_price"><br>
+    <button onclick="Filter()">Застосувати</button>
+
+
+    <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-firestore.js"></script>
+
+    <script src="array.js"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>

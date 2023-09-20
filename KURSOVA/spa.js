@@ -374,3 +374,31 @@ function calcCartPriceAndDelivery() {
 		deliveryCost.innerText = '50 грн';
 	}
 }
+
+let all_tovars = [];
+function GetTovars(){
+    db.collection('products').get().then(res => 
+        res.forEach(doc =>{
+            let obj = doc.data();
+            obj.id = doc.id;
+            all_tovars.push(obj)
+        })    
+    )
+    console.log(all_tovars)
+}
+GetTovars()
+function Filter(){
+  
+    let nph = all_tovars.slice();
+    if(min_price.value.length > 0){
+        nph = nph.filter(function(phone){
+            return min_price.value <= phone.price
+        })
+    }
+    if(max_price.value.length > 0){
+        nph = nph.filter(function(phone){
+            return max_price.value >= phone.price 
+        })
+    }
+    console.log(nph)
+}
