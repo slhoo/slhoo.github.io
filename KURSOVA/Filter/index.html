@@ -19,14 +19,132 @@
     <button onclick="Filter()">Застосувати</button>
 
     <div id="tovari">
-
+    
     </div>
+    <div id="cart-container"></div>
+
+    <!-- Приклад кнопки для додавання товару у кошик
+    <button onclick="addToCart('1', 'Товар 1', 20)">Додати товар 1 у кошик</button>
+    <button onclick="addToCart('2', 'Товар 2', 30)">Додати товар 2 у кошик</button> -->
 
     <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-firestore.js"></script>
 
     <script src="array.js"></script>
     <script src="main.js"></script>
+<script>
+           let vsi_tovari=[]
+       function drawTovars(){
+           let tovari = document.getElementById('tovari');
+           tovari.innerHTML = ''
+           db.collection('products').get().then(res => {
+               res.forEach(doc  =>{
+                   let tovar = doc.data();
+                   tovar.id = doc.id;
+                   tovar.count = 1;
+                   vsi_tovari.push(tovar)
+                   tovari.innerHTML += `
+               <div class="tovar">
+                   <p>Назва: ${tovar.name}</p>
+                   <p>Картинка:${tovar.img}</p>
+                   <p>Діагональ:${tovar.display}</p>
+                   <p>Акумулятор:${tovar.accumulyator}</p>
+                   <p>Ціна: ${tovar.price}</p>
+                   <button onclick="saveLocal(${vsi_tovari.length-1})">Купити</button>
+               </div>
+                   `
+                  
+               })
+           })
+       }
+       drawTovars()
+       console.log(vsi_tovari)
+       
+       function saveLocal(index){
+           let loc_tovars = getLocal();
+        
+           let tovar = loc_tovars.findIndex(car => car.id === vsi_tovari[index].id);
+            
+           if(tovar === -1){
+               loc_tovars.push(vsi_tovari[index])
+           }else{
+               loc_tovars[tovar].count++
+           }
+          
+           console.log(tovar)
+       
+       
+          
+           localStorage.setItem('prod', JSON.stringify(loc_tovars))
+          
+       }
+       
+       
+       function getLocal(){
+          let prod =  JSON.parse(localStorage.getItem('prod'));
+           if(prod === null){
+               return []
+           }else{
+               return prod
+           }
+       
+       
+       }
 
+
+
+function addToCart(productId, productName, price) {
+  // Отримуємо поточні дані кошика з LocalStorage або створюємо новий пустий кошик
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Перевіряємо, чи є товар з таким productId в кошику
+  const existingProductIndex = cart.findIndex(item => item.productId === productId);
+
+  if (existingProductIndex !== -1) {
+    // Якщо товар вже є у кошику, збільшуємо кількість
+    cart[existingProductIndex].quantity++;
+  } else {
+    // Якщо товару немає у кошику, додаємо його
+    cart.push({
+      productId,
+      productName,
+      price,
+      quantity: 1
+    });
+  }
+
+  // Зберігаємо оновлені дані кошика в LocalStorage
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+
+
+function displayCart() {
+  // Отримуємо дані кошика з LocalStorage
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Отримуємо DOM-елемент, де будемо відображати кошик
+  const cartContainer = document.getElementById('cart-container');
+
+  // Очищаємо вміст контейнера перед відображенням оновленого кошика
+  cartContainer.innerHTML = '';
+
+  if (cart.length === 0) {
+    cartContainer.innerHTML = '<p>Кошик порожній.</p>';
+    return;
+  }
+
+  // Відображаємо кожен товар у кошику
+  cart.forEach(item => {
+    const cartItemDiv = document.createElement('div');
+    cartItemDiv.innerHTML = `<p>${item.productName} - Ціна: $${item.price} - Кількість: ${item.quantity}</p>`;
+    cartContainer.appendChild(cartItemDiv);
+  });
+}
+
+// Викликаємо функцію для відображення кошика при завантаженні сторінки
+window.onload = displayCart;
+
+</script>
 </body>
 </html>

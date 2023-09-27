@@ -6,24 +6,24 @@
                 <img :src="img" class="avatar">
                 <div style="display: flex;">
                     <div class="input_prof" style="display: flex; flex-direction: column;">
-                            <label>Прізвище:</label>
-                            <input type="text" v-model="lastname" readonly>
-                            <label>Ім'я:</label>
-                            <input type="text" v-model="name" readonly>
-                            <label>По-батькові:</label>
-                            <input type="text" v-model="patronymic" readonly>    
-                            <label>Електрона пошта:</label>
-                            <input type="email" v-model="email" readonly>         
+                            <label style="color: rgb(186, 186, 186);">Прізвище:</label>
+                            <input class="non_inp" type="text" v-model="lastname" readonly>
+                            <label style="color: rgb(186, 186, 186);">Ім'я:</label>
+                            <input class="non_inp" type="text" v-model="name" readonly>
+                            <label style="color: rgb(186, 186, 186);">По-батькові:</label>
+                            <input class="non_inp" type="text" v-model="patronymic" readonly>    
+                            <label style="color: rgb(186, 186, 186);">Електрона пошта:</label>
+                            <input class="non_inp" type="email" v-model="email" readonly>         
                     </div>
                     <div class="input_prof2" style="display: flex; flex-direction: column;">
-                            <label>Номер телефону:</label>
-                            <input type="text" v-model="phone" readonly>
-                            <label>Населений пункт:</label>
-                            <input type="text" v-model="place" readonly>
-                            <label>Поштове відділення:</label>
-                            <input type="text" v-model="postoffice" readonly>
-                            <label>Пароль:</label>
-                            <input type="password" v-model="password" readonly>
+                            <label style="color: rgb(186, 186, 186);">Номер телефону:</label>
+                            <input class="non_inp" type="text" v-model="phone" readonly>
+                            <label style="color: rgb(186, 186, 186);">Населений пункт:</label>
+                            <input class="non_inp" type="text" v-model="place" readonly>
+                            <label style="color: rgb(186, 186, 186);">Поштове відділення:</label>
+                            <input class="non_inp" type="text" v-model="postoffice" readonly>
+                            <label style="color: rgb(186, 186, 186);">Пароль:</label>
+                            <input class="non_inp" type="password" v-model="password" readonly>
                     </div>                
                 </div>                
             </div>
@@ -34,14 +34,15 @@
 
             <div v-if="showDeleteConfirmation" class="delete-confirmation">
                 <p>Ви дійсно хочете видалити свій акаунт?</p>
-                <button @click="deleteAccount">Так</button>
-                <button @click="showDeleteConfirmation = false">Ні</button>
+                <button @click="showDeleteConfirmation = false" class="but_delete no">Ні</button>
+                <button @click="deleteAccount" class="but_delete yes">Так</button>
+                
             </div>
         </div>
         </div>
     </div>
+    
 </div>
-
     <div class="edit_info" v-if="showEditWindow">
         <div style="display: flex; flex-direction: column;">
             <label class="label">Прізвище:</label>

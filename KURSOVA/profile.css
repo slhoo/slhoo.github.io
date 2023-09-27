@@ -95,6 +95,13 @@ label{
     margin-top: 10px;
     font-size: 15px;
 }
+.non_inp{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: rgb(255, 255, 255);
+    margin-top: 5px;
+}
 .inp{
     background-color: transparent;
     border: none;
@@ -107,10 +114,27 @@ label{
 }
 .delete-confirmation{
     background-color: white;
-    border: 1px solid #ccc;
+    border-radius: 5px;
     padding: 20px;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+.but_delete{
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 5px;
+}
+.yes{
+    color: white;
+    background-color: brown;
+    border: 2px solid brown;
+    border-radius: 5px;
+}
+.no{
+    color: white;
+    background-color: rgb(255, 115, 1);
+    border: 2px solid rgb(191, 95, 17);
+    border-radius: 5px;
 }
