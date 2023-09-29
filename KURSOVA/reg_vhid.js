@@ -6,9 +6,10 @@ function google_vhid(){
     var user = result.user;
     console.log(result)
     console.log(user)
-    create_user(user.uid,'','','')
+    const randomPassword = generateRandomPassword();
+    create_user(user.uid, user.displayName, user.email, randomPassword)
     localStorage.setItem('login',user.uid)
-    setTimeout(function(){window.location.href = `spa.html?id=${user.uid}#/main`}, 2000)
+    setTimeout(function(){window.location.href = `spa.html?id=${user.uid}#/main`}, 1000)
   }).catch((error) => {
     var errorCode = error.code;
     var errorMessage = error.message;
@@ -18,7 +19,14 @@ function google_vhid(){
     console.log(email)
   });
 }
-
+function generateRandomPassword() {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let randomPassword = '';
+  for (let i = 0; i < 8; i++) {
+    randomPassword += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return randomPassword;
+}
 function ema_pass(){
     
     firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
@@ -28,7 +36,7 @@ function ema_pass(){
     console.log(user)
     create_user(user.uid, nik.value, email.value, password.value)
     localStorage.setItem('login',user.uid)
-    setTimeout(function(){window.location.href = `spa.html?id=${user.uid}#/main`}, 2000)
+    setTimeout(function(){window.location.href = `spa.html?id=${user.uid}#/main`}, 1000)
   })
   .catch((error) => {
     var errorCode = error.code;
@@ -38,6 +46,20 @@ function ema_pass(){
    
   });
   
+}
+function create(uid, displayName, email, password) {
+  const userRef = db.collection('users_kursova').doc(uid);
+  userRef.set({
+    displayName: displayName,
+    email: email,
+    password: password
+  })
+    .then(() => {
+      console.log('Користувач успішно доданий у базу даних.');
+    })
+    .catch((error) => {
+      console.error('Помилка додавання користувача у базу даних: ', error);
+    });
 }
 function create_user(id, na, em, passw){
     let user = {
@@ -139,7 +161,7 @@ function ema_pass_vhid(){
   .then((userCredential) => {
     var user = userCredential.user;
     localStorage.setItem('login',user.uid)
-    setTimeout(function(){window.location.href = `spa.html?id=${user.uid}#/main`}, 2000)
+    setTimeout(function(){window.location.href = `spa.html?id=${user.uid}#/main`}, 1000)
   })
   .catch((error) => {
     var errorCode = error.code;
