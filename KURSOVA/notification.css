@@ -1,0 +1,58 @@
+body{
+    margin: 0;
+    padding: 0;
+    min-height: 300vh;
+}
+.mes-box{
+    position: fixed;
+    z-index: 9999;
+    top: 120px;
+    right: 30px;
+
+}
+.mes-content{
+    position: relative;
+    width: 300px;
+    padding: 15px;
+    overflow: hidden;
+    border-radius: 3px;
+    box-shadow: 0 0 12px #999;
+    color: white;
+    opacity: 0.95;
+    background: blue;
+}
+.mes-header{
+    font-size: 15px;
+    font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.mes-text{
+    font-size: 15px;
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.mes-suc{
+    background-color: #51a351;
+}
+.mes-suc2{
+    background-color: #0bb90b;
+}
+.mes-inf{
+    background-color: #098bb3;
+}
+.mes-warn{
+    background-color: #f89406;
+}
+.mes-error{
+    background-color: #bd362f;
+}
+.mes-time-line{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    background-color: #000;
+    opacity: 0.4;
+
+    
+}

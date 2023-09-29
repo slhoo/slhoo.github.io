@@ -10,17 +10,6 @@
 </head>
 <body>
 <a href="orders.html">Товари</a>
-    <!-- <div class="main" id="admin_vue">
-      <div class="menu" >
-        <a href="#/add_tovar">Товари</a>
-        
-        <a href="#/user_list">Список користувачів</a>
-      </div>
-      <div class="workplace">
-
-        <component :is="currentView"/>
-      </div>
-    </div> -->
     <div class="container-fluid" style="margin-top: 20px;">
       <div id="arrayLength"></div>
       <button onclick="showMod('addTaskModal')" style="background-color: transparent; border: 2px solid rgb(200, 200, 200); color: rgb(255, 255, 255); padding: 7px; margin-bottom: 10px; margin-left: 10px;">Додати товар</button>
@@ -95,8 +84,6 @@
           </div>
       </div>
   </div>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script src="https://unpkg.com/vue@next"></script>
         <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-firestore.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-auth.js"></script>

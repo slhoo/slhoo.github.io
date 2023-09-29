@@ -22,7 +22,7 @@
     background-color: rgba(0, 0, 0, 0.73);
     border-radius: 40px;
     flex-direction: column;
-    z-index: 99;
+    z-index: 999;
     position: relative;
     /* left: -15%; */
     margin-right: 50px;
@@ -137,4 +137,8 @@ label{
     background-color: rgb(255, 115, 1);
     border: 2px solid rgb(191, 95, 17);
     border-radius: 5px;
+}
+#orderModal{
+    background-color: aquamarine;
+    position:fixed;
 }

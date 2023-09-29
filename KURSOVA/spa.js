@@ -85,22 +85,6 @@ document.addEventListener('DOMContentLoaded', async function(){
                         this.$root.content = this.products;
                     });
                 },
-                slideLeft() {
-                    const slides = document.querySelector(`.slides`);
-                    const slides_num = document.querySelectorAll(`.slide`);
-                    if (this.gm(slides) >= -((slides_num.length - 2) * 500)) {
-                      slides.style.marginLeft = `${this.gm(slides) - 500}px`;
-                    }
-                  },
-                  slideRight() {
-                    const slides = document.querySelector(`.slides`);
-                    if (this.gm(slides) < 0) {
-                      slides.style.marginLeft = `${this.gm(slides) + 500}px`;
-                    }
-                  },
-                  gm(slides) {
-                    return Number(slides.style.marginLeft.replace(`px`, ``));
-                  },
                   getRandomProductFromFirebase() {
                     const db = firebase.firestore();
                     db.collection('products').get().then(snapshot => {
@@ -178,6 +162,11 @@ document.addEventListener('DOMContentLoaded', async function(){
                 };
             }, 
             methods:{
+              handleButtonClick() {
+                this.toggleEditWindow();
+                this.saveChanges();
+                displayMessage('mes-suc', 'Увага!', 'Зміни збережено', 4000);
+              },
                   deleteAccount() {
                     const user = firebase.auth().currentUser;
                     if (user) {
@@ -212,19 +201,15 @@ document.addEventListener('DOMContentLoaded', async function(){
                 saveChanges() {
                     const userRef = db.collection('users_kursova').doc(user_id);
                     userRef.update({
-                      name: this.name,
-                      lastname: this.lastname,
-                      patronymic: this.patronymic,
-                      phone: this.phone,
-                      place: this.place,
-                      postoffice: this.postoffice,
-                      img: this.img,
+                      name: this.name || '',
+                      lastname: this.lastname || '',
+                      patronymic: this.patronymic || '',
+                      phone: this.phone || '',
+                      place: this.place || '',
+                      postoffice: this.postoffice || '',
+                      img: this.img || '',
                       email: this.email,
                       password: this.password,
-                    }).then(() => {
-                      console.log("Зміни збережено успішно!");
-                    }).catch((error) => {
-                      console.error("Помилка при збереженні змін:", error);
                     });
                   },
                   handleImageUpload(event) {
@@ -506,6 +491,12 @@ function handleOrder() {
 
 const ordersCollection = db.collection('kursova_orders');
 ordersCollection.add(orderInfo)
+displayMessage('mes-inf','Хвилинку','Триває обробка',2000);
+hideModal(3000);
+setTimeout(() => {
+  displayMessage('mes-suc2', 'Дякую за ваше замовлення!', 'Детальна інформація про номер замовлення, час доставки та статус замовлення згодом прийде на вашу електрону пошту', 13000);
+}, 4600);
+
 }
 console.log(orderDetails)
 function calculateTotalPrice(cartItems) {
@@ -515,3 +506,18 @@ function calculateTotalPrice(cartItems) {
   });
   return totalPrice;
 } 
+function hideModal(delayInMilliseconds) {
+  setTimeout(function () {
+    
+    const modal = document.getElementById('cart_block');
+
+    if (modal) {
+      modal.style.display = 'none';
+    }
+  }, delayInMilliseconds);
+}
+setTimeout(function () {
+  const orderModal = document.getElementById('orderModal');
+  orderModal.style.display = 'block';
+}, 5000);
+console.log(orderModal);

@@ -1,10 +1,9 @@
 const ordersTable = document.getElementById('ordersTable');
 const ordersTableBody = document.getElementById('ordersTableBody');
 
-function displayOrders() {
+function displayOrders(id) {
   db.collection('kursova_orders').onSnapshot(snapshot => {
-    ordersTableBody.innerHTML = ''; 
-
+    ordersTableBody.innerHTML = '';
     snapshot.forEach(doc => {
       const orderData = doc.data();
       const orderRow = document.createElement('tr');
@@ -18,13 +17,19 @@ function displayOrders() {
         <td>${formatOrderDetails(orderData.orderDetails)}</td>
         <td>${orderData.totalPrice}</td>
         <td>
-          <select id="statusSelect" onchange="updateOrderStatus('${doc.id}', this.value)">
-            <option value="pending" ${orderData.status === 'pending' ? 'selected' : ''}>Очікує на розгляд</option>
-            <option value="processing" ${orderData.status === 'processing' ? 'selected' : ''}>Обробляється</option>
-            <option value="sent" ${orderData.status === 'sent' ? 'selected' : ''}>Відправлено</option>
-            <option value="delivered" ${orderData.status === 'delivered' ? 'selected' : ''}>Доставлено</option>
-          </select>
+        <select class="status-select" onchange="updateOrderStatus('${doc.id}', this.value)">
+        <option value="pending" ${orderData.status === 'pending' ? 'selected' : ''}><span>🟡</span> Очікує на розгляд</option>
+
+        <option value="processing" ${orderData.status === 'processing' ? 'selected' : ''}><span>🟣</span> Обробляється</option>
+        
+        <option value="sent" ${orderData.status === 'sent' ? 'selected' : ''}><span>🔵</span> Відправлено</option>
+        
+        <option value="delivered" ${orderData.status === 'delivered' ? 'selected' : ''}><span>🟢</span> Доставлено</option>
+        
+      </select>
+              
         </td>
+        <td><button onclick="delDoc('${doc.id}')" style="background-color: transparent; color: rgb(254, 48, 7); padding: 7px; border: none;">Видалити замовлення</button></td>
       `;
 
       ordersTableBody.appendChild(orderRow);
@@ -32,6 +37,9 @@ function displayOrders() {
   });
 }
 
+function delDoc(orderId) {
+  db.collection('kursova_orders').doc(orderId).delete()
+}
 function formatOrderDetails(orderDetails) {
   const details = orderDetails.map(item => `${item.title} (x ${item.counter}) - ${item.writer}`).join('<br>');
   return details;
