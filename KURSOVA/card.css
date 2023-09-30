@@ -40,15 +40,6 @@
     align-items: center;
     overflow: hidden;
   }
-  /* .back::before {
-    position: absolute;
-    content: ' ';
-    display: block;
-    width: 160px;
-    height: 160%;
-    background: linear-gradient(90deg, transparent, #66fcff, #66fcff, #66fcff, #66fcff, transparent);
-    animation: rotation_481 5000ms infinite linear;
-  } */
   .back-content {
     position: absolute;
     width: 99%;
@@ -116,4 +107,9 @@
     border-radius: 5px; 
     font-weight: bold; 
     padding: 6px;
+    margin-left: 20px;
   }
+.btn_add_cart:hover{
+    background-color: red;
+    transition: 0.3s;
+}

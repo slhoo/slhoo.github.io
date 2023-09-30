@@ -237,6 +237,7 @@ document.addEventListener('DOMContentLoaded', async function(){
                 return data;
             }, 
             methods: {
+
                 toggleCart() {
                     this.showCart = !this.showCart;
                 },
@@ -260,11 +261,11 @@ document.addEventListener('DOMContentLoaded', async function(){
                 window.addEventListener('hashchange', () => {
                     this.currentPath = window.location.hash;
                   });
-                  
             }
         };
         Vue.createApp(app).mount('#app');
     });
+    CountBooksInCart();
     window.addEventListener('click', function (event) {
       let counter;
       if(event.target.dataset.action === 'plus' || event.target.dataset.action === 'minus'){
@@ -286,6 +287,7 @@ document.addEventListener('DOMContentLoaded', async function(){
           calcCartPriceAndDelivery();
       }
       updateCartAndDisplay();
+
   });
   let cartItems = [];
   function getCartItemsFromLocalStorage() {
@@ -304,6 +306,7 @@ document.addEventListener('DOMContentLoaded', async function(){
     }
     saveCartItemsToLocalStorage();
     updateCartAndDisplay();
+
   }
   window.addEventListener('click', function (event) {
     if (event.target.hasAttribute('data-cart')) {
@@ -347,6 +350,7 @@ document.addEventListener('DOMContentLoaded', async function(){
   
       saveCartItemsToLocalStorage();
       updateCartAndDisplay();
+
     }
   });
   
@@ -379,11 +383,12 @@ document.addEventListener('DOMContentLoaded', async function(){
   
       cartContainer.insertAdjacentHTML('beforeend', cartItemHTML);
     });
-  
     calcCartPriceAndDelivery();
+
   }
   
   function updateCartAndDisplay() {
+    CountBooksInCart();
     cartItems = getCartItemsFromLocalStorage();
     displayCart();
     calcCartPriceAndDelivery();
@@ -392,6 +397,7 @@ document.addEventListener('DOMContentLoaded', async function(){
   window.addEventListener('load', function () {
     cartItems = getCartItemsFromLocalStorage();
     displayCart();
+
   });
   
   cartContainer.addEventListener('click', function (event) {
@@ -459,8 +465,9 @@ function removeFromCart(itemId) {
         totalPriceEl.innerText = priceTotal + ' грн';
       }
   };
-  
+
 function handleOrder() {
+
   const userData = {
     lastname: document.getElementById('lastname').value,
     name: document.getElementById('name').value,
@@ -488,13 +495,14 @@ function handleOrder() {
     orderDetails,
     totalPrice,
   };
-
+const num_ord = generateRandom();
 const ordersCollection = db.collection('kursova_orders');
 ordersCollection.add(orderInfo)
 displayMessage('mes-inf','Хвилинку','Триває обробка',2000);
 hideModal(3000);
 setTimeout(() => {
-  displayMessage('mes-suc2', 'Дякую за ваше замовлення!', 'Детальна інформація про номер замовлення, час доставки та статус замовлення згодом прийде на вашу електрону пошту', 13000);
+  displayMessage('mes-suc2', 'Дякую за ваше замовлення!', `Номер замовлення - ${num_ord}. Більш детальна інформація про час доставки та деталі замовлення згодом прийде на вашу електрону пошту`, 12000);
+  nn()
 }, 4600);
 
 }
@@ -521,3 +529,19 @@ setTimeout(function () {
   orderModal.style.display = 'block';
 }, 5000);
 console.log(orderModal);
+
+function CountBooksInCart(){
+  const prodsNum = getCartItemsFromLocalStorage().length;
+  console.log(prodsNum);
+  const books_in_cart = document.getElementById('books_in_cart');
+  books_in_cart.innerText = `${prodsNum}`;
+}
+
+function generateRandom() {
+  const characters = '0123456789';
+  let random = '';
+  for (let i = 0; i < 10; i++) {
+    random += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return random;
+}

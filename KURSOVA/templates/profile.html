@@ -1,4 +1,4 @@
-<div style="display: flex; justify-content: space-between;">
+<div style="display: flex; justify-content: space-between; margin-top: 80px;">
 <div class="main">
     <div class="main_div_profile">
         <div class="info_profile">
@@ -33,7 +33,6 @@
         <div class="akk">
             <button class="edit_akk" @click="toggleEditWindow">Редагувати акаунт</button>
             <button class="delete_akk" @click="showDeleteConfirmation = true">Видалити акаунт</button>
-
             <div v-if="showDeleteConfirmation" class="delete-confirmation">
                 <p>Ви дійсно хочете видалити свій акаунт?</p>
                 <button @click="showDeleteConfirmation = false" class="but_delete no">Ні</button>

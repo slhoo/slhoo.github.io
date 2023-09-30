@@ -20,12 +20,14 @@ body{
     box-sizing: border-box;
 }
 nav{
+    position: fixed;
     display: flex;
     align-items: center;
     width: 100%;
     height: 80px;
     background: rgba(0, 0, 0, 0.880);
     border-radius: 3px;
+    z-index: 9999;
 }
 nav .logo{
     font-size: 1.5rem;
@@ -177,10 +179,6 @@ nav .logo{
     bottom: -15px;
     left: 50px;
 }
-/* #cart_block{
-    display: none;
-
-} */
 .btn_close{
     height: 22px;
     width: 30px;
@@ -271,4 +269,3 @@ input[type="search"]::-webkit-search-cancel-button {
     font-weight: bold;
     font-size: 14px;
 }
-
