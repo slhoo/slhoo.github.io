@@ -465,7 +465,11 @@ function removeFromCart(itemId) {
         totalPriceEl.innerText = priceTotal + ' грн';
       }
   };
-
+  function clearCart() {
+    localStorage.removeItem('cartItems');
+    console.log('Кошик очищено.');
+  }
+  
 function handleOrder() {
 
   const userData = {
@@ -495,17 +499,25 @@ function handleOrder() {
     orderDetails,
     totalPrice,
   };
+
+
 const num_ord = generateRandom();
 const ordersCollection = db.collection('kursova_orders');
 ordersCollection.add(orderInfo)
+
 displayMessage('mes-inf','Хвилинку','Триває обробка',2000);
 hideModal(3000);
+
 setTimeout(() => {
   displayMessage('mes-suc2', 'Дякую за ваше замовлення!', `Номер замовлення - ${num_ord}. Більш детальна інформація про час доставки та деталі замовлення згодом прийде на вашу електрону пошту`, 12000);
-  nn()
+  clearCart()
 }, 4600);
 
 }
+
+
+
+
 console.log(orderDetails)
 function calculateTotalPrice(cartItems) {
   let totalPrice = 0;
